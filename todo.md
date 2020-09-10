@@ -15,7 +15,7 @@ Users
       -> Creating
          -> Text
          -> Image
-   -> Delete
+   -> Delete tweets
    -> Retweeting
 
 3. Following / Followers
@@ -27,4 +27,4 @@ Users
 Long tern todos
 -Notification
 -DM
--Explore finding hashtags
+-Explore hashtags

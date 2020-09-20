@@ -26,7 +26,12 @@ SECRET_KEY = 'i74x55@8s+9!8lrp6jf^57e5^fb=kd6bc7+id&2gvy05g&m*6h'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['localhost','127.0.0.1']
+LOGIN_URL = '/login'
+
+MAX_TWEET_LENGTH = 240
+TWEET_ACTION_OPTIONS = ['like','unlike','retweet']
+
 
 
 # Application definition
@@ -38,12 +43,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'tweets'
+    'rest_framework',
+    'corsheaders',
+    'tweets',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -120,3 +128,22 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+CORS_ORIGIN_ALLOW_ALL = True  # any website has access to my apis
+CORS_URLS_REGEX = r'^/api/.*$'
+
+DEFAULT_RENDERER_CLASSES = [
+        'rest_framework.renderers.JSONRenderer',
+    ]
+
+if DEBUG:
+   DEFAULT_RENDERER_CLASSES += ['rest_framework.renderers.BrowsableAPIRenderer',
+   ]
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        'rest_framework.authentication.SessionAuthentication',
+        ],
+    "DEFAULT_RENDERER_CLASSES" : DEFAULT_RENDERER_CLASSES
+}

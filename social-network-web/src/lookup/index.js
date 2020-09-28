@@ -1,5 +1,5 @@
-import { loadTweets } from "./lookup"
+import { backendlookup } from './lookup'
 
 export {
-    loadTweets
+    backendlookup
 }

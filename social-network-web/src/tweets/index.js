@@ -1,5 +1,14 @@
-import { ActionBtn, Tweet, TweetList } from "./component"
+import { ActionBtn, Tweet, TweetList, TweetComponent } from "./component"
+
+import { apiTweetCreate, apiTweetList, apiTweetAction } from "./lookup"
 
 export {
-    ActionBtn, Tweet, TweetList
+    apiTweetList,
+    apiTweetCreate,
+    apiTweetAction,
+}
+
+
+export {
+    ActionBtn, Tweet, TweetList, TweetComponent
 }
